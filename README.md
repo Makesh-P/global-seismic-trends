@@ -59,7 +59,7 @@ Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic
 1. Build the database. This downloads the data, cleans it and loads it into MySQL. It makes one API request per month, so it takes a few minutes.
 
    ```bash
-   python seismic_etl.py
+   python Seismic_ETL.py
    ```
 
 2. Start the dashboard.
