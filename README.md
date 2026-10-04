@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 ### Configure the database connection
 
-Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic_dashboard.py` and set the host, user and password to match your setup. The scripts use a database named `earthquake_db` and a table named `earthquake`.
+Both scripts connect to a local MySQL server. Open `Seismic_ETL.py` and `seismic_dashboard.py` and set the host, user and password to match your setup. The scripts use a database named `earthquake_db` and a table named `earthquake`.
 
 ### Run
 
