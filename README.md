@@ -29,10 +29,13 @@ The project collects about five years of global earthquake records from the USGS
 
 ```
 global-seismic-trends/
-├── seismic_etl.py          # Extract, transform and load: API to MySQL
-├── seismic_dashboard.py    # Streamlit dashboard
+├── screenshots/
+│   ├── overview.png
+│   └── sql_analysis.png
+├── README.md
 ├── requirements.txt
-└── README.md
+├── seismic_dashboard.py    # Streamlit dashboard
+└── seismic_etl.py          # Extract, transform and load: API to MySQL
 ```
 
 ## Getting Started
@@ -99,8 +102,8 @@ Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic
 
 ## Screenshots
 
-![Overview](/screenshots/overview)
-![SQL Analysis](/screenshots/sql_analysis)
+![Overview](screenshots/overview.png)
+![SQL Analysis](screenshots/sql_analysis.png)
 
 ## Key Findings
 
