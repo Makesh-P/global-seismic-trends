@@ -7,9 +7,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# -----------------------------
 # Database connection
-# -----------------------------
 engine = create_engine(
     f"mysql+pymysql://root:makesh28@localhost:3306/earthquake_db"
 )
@@ -244,9 +242,8 @@ queries = {
     """
 }
 
-# -----------------------------
 # Cached database helpers
-# -----------------------------
+
 @st.cache_data(ttl=300)
 def read_sql(query):
     return pd.read_sql(query, engine)
@@ -309,19 +306,16 @@ def get_overview_data():
 
     return total, avg_mag, max_mag, max_depth, yearly, magnitude, depth, tsunami, map_data
 
-
-# -----------------------------
 # Header
-# -----------------------------
+
 st.title("Global Seismic Trends")
 
 overview_tab, sql_tab= st.tabs(
     ["Overview", "SQL Analysis"]
 )
 
-# -----------------------------
 # Overview
-# -----------------------------
+
 with overview_tab:
 
     try:
@@ -408,9 +402,8 @@ with overview_tab:
         st.error("Could not load the overview data.")
         st.exception(e)
 
-# -----------------------------
 # SQL Analysis
-# -----------------------------
+
 with sql_tab:
 
     st.subheader("Database Queries")
