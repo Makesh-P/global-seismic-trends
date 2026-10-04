@@ -97,6 +97,11 @@ Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic
 - **Overview:** five key metrics, a map of earthquake locations, and charts by year, magnitude category, depth category and tsunami-flagged events
 - **SQL Analysis:** choose a question from the list and run its query against the database
 
+## Screenshots
+
+![Overview](screenshots/overview.png)
+![SQL Analysis](screenshots/sql_analysis.png)
+
 ## Key Findings
 
 - **Strongest events:** all ten strongest earthquakes are M7.7 or higher. The largest is M8.8 in Russia (July 2025), followed by M8.2 in the United States (July 2021) and two M8.1 events (South Sandwich Islands, August 2021; New Zealand region, March 2021).
