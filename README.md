@@ -97,6 +97,22 @@ Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic
 - **Overview:** five key metrics, a map of earthquake locations, and charts by year, magnitude category, depth category and tsunami-flagged events
 - **SQL Analysis:** choose a question from the list and run its query against the database
 
+## Key Findings
+
+- **Strongest events:** all ten strongest earthquakes are M7.7 or higher. The largest is M8.8 in Russia (July 2025), followed by M8.2 in the United States (July 2021) and two M8.1 events (South Sandwich Islands, August 2021; New Zealand region, March 2021).
+- **Busiest year:** 2025 has the most earthquakes (18,298). The final year in the data is incomplete.
+- **Time patterns are close to uniform.** Friday leads the weekdays with 13,695 events, but that is only about 14.6% of the total, against 14.3% for an even split. Hourly counts range from 3,682 (12:00 UTC) to 4,210 (03:00 UTC), so there is no meaningful daily or weekly cycle.
+- **Monthly counts favour January to September,** because those months have six years of data and October to December have five. August (9,381) leads for that reason as well as any seasonal effect.
+- **Most active regions:** Indonesia (9,560 events), Japan (7,275) and Russia (6,421). Their average magnitudes are nearly identical (about 4.50), so the ranking is driven by frequency, not strength.
+- **Highest average magnitudes occur in remote regions** (Tristan da Cunha, Micronesia, Balleny Islands). This probably reflects sparse seismic station coverage, where only larger events are detected, and does not mean higher hazard.
+- **Shallow earthquakes dominate.** Among countries with at least five deep events, New Zealand (about 144 shallow per deep event) and the Solomon Islands (about 105) have the highest shallow-to-deep ratios.
+- **One network reports almost everything:** the `us` network accounts for roughly 99% of events.
+
+## Recommendations
+
+- **Governments and urban planners:** prioritise building codes and emergency planning in the most active and shallow-dominated regions, since shallow quakes produce stronger shaking near the epicentre.
+- **Insurers:** weigh exposure by event frequency in high-activity countries, and treat average magnitude alone as a weak risk signal.
+- **Researchers:** account for detection limits in remote regions, and for uneven time coverage, when comparing months or years.
 
 ## Author
 
