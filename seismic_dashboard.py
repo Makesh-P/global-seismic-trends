@@ -8,10 +8,10 @@ st.set_page_config(
 )
 
 # Database connection
+
 engine = create_engine(
     f"mysql+pymysql://root:makesh28@localhost:3306/earthquake_db"
 )
-
 
 queries = {
 
@@ -151,10 +151,14 @@ queries = {
     """,
 
     "21. Top 5 countries with the highest avg magnitude of earthquakes": """
-        SELECT country , avg(mag) as avg_magnitude FROM earthquake
-            group by country
-            order by avg_magnitude DESC
-            LIMIT 5;
+        SELECT country, COUNT(*) AS events, ROUND(AVG(mag), 2) AS avg_magnitude
+        FROM earthquake
+        WHERE type = 'earthquake'
+          AND time >= (SELECT MAX(time) FROM earthquake) - INTERVAL 5 YEAR
+        GROUP BY country
+        HAVING COUNT(*) >= 20
+        ORDER BY avg_magnitude DESC
+        LIMIT 5
     """,
 
     "22. Countries with shallow and deep earthquakes in the same month": """
