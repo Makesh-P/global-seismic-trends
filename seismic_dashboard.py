@@ -304,9 +304,9 @@ def get_overview_data():
     map_data = pd.read_sql("""
         SELECT latitude, longitude, mag
         FROM earthquake
-        WHERE latitude IS NOT NULL
-          AND longitude IS NOT NULL
+        WHERE type = 'earthquake' AND mag >= 5
     """, engine)
+    map_data["size"] = map_data["mag"] ** 3 * 300
 
     return total, avg_mag, max_mag, max_depth, yearly, magnitude, depth, tsunami, map_data
 
