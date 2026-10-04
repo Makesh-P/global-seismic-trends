@@ -29,7 +29,7 @@ The project collects about five years of global earthquake records from the USGS
 
 ```
 global-seismic-trends/
-├── Seismic_ETL.py          # Extract, transform and load: API to MySQL
+├── seismic_etl.py          # Extract, transform and load: API to MySQL
 ├── seismic_dashboard.py    # Streamlit dashboard
 ├── requirements.txt
 └── README.md
@@ -52,14 +52,14 @@ pip install -r requirements.txt
 
 ### Configure the database connection
 
-Both scripts connect to a local MySQL server. Open `Seismic_ETL.py` and `seismic_dashboard.py` and set the host, user and password to match your setup. The scripts use a database named `earthquake_db` and a table named `earthquake`.
+Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic_dashboard.py` and set the host, user and password to match your setup. The scripts use a database named `earthquake_db` and a table named `earthquake`.
 
 ### Run
 
 1. Build the database. This downloads the data, cleans it and loads it into MySQL. It makes one API request per month, so it takes a few minutes.
 
    ```bash
-   python Seismic_ETL.py
+   python seismic_etl.py
    ```
 
 2. Start the dashboard.
