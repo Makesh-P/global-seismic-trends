@@ -100,7 +100,7 @@ Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic
 - **Overview:** five key metrics, a map of earthquake locations, and charts by year, magnitude category, depth category and tsunami-flagged events
 - **SQL Analysis:** choose a question from the list and run its query against the database
 
-## Screenshots
+## Dashboard Preview
 
 ![Overview](screenshots/overview.png)
 ![SQL Analysis](screenshots/sql_analysis.png)
