@@ -99,8 +99,8 @@ Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic
 
 ## Screenshots
 
-![Overview](screenshots/overview.png)
-![SQL Analysis](screenshots/sql_analysis.png)
+![Overview](/screenshots/overview)
+![SQL Analysis](/screenshots/sql_analysis)
 
 ## Key Findings
 
