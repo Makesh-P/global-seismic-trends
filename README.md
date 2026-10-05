@@ -29,6 +29,8 @@ The project collects about five years of global earthquake records from the USGS
 
 ```
 global-seismic-trends/
+├── .streamlit/
+│   └── config.toml
 ├── screenshots/
 │   ├── overview.png
 │   └── sql_analysis.png
