@@ -37,7 +37,7 @@ queries = {
     """,
 
     "4. Average depth per continent":
-        "Not available: the dataset has no continent column.",
+        "Not available: Data is not sufficient.",
 
     "5. Average magnitude per magnitude type": """
         SELECT magType, AVG(mag) AS Avg_mag
@@ -97,7 +97,7 @@ queries = {
     """,
 
     "12. Total estimated economic loss per continent":
-        "Not available: the dataset has no economic loss or continent column.",
+        "Not available: Data is not sufficient.",
 
     "13. Average economic loss by alert level": """
         SELECT alert, COUNT(*) AS Count
@@ -127,7 +127,7 @@ queries = {
     """,
 
     "17. Average RMS and gap per continent":
-        "Not available: the dataset has no continent column.",
+        "Not available: Data is not sufficient.",
 
     "18. Events with high station coverage (nst > threshold)": """
         SELECT *
@@ -234,7 +234,7 @@ queries = {
     """,
 
     "29. Consecutive earthquakes within 50 km and 1 hour":
-        """Not available : it needs a pairwise time-and-distance comparison between events.""",
+        """Not available : Data is not sufficient.""",
 
     "30. Regions with the highest frequency of deep earthquakes": """
         SELECT country, COUNT(*) AS Deep_events
@@ -377,7 +377,6 @@ with overview_tab:
             )
 
             
-
         with chart_tab2:
             st.subheader("Earthquakes by Magnitude Category")
             st.write(
