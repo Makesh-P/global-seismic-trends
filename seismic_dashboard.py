@@ -354,7 +354,8 @@ with overview_tab:
                 map_data,
                 latitude="latitude",
                 longitude="longitude",
-                size="mag"
+                size="mag",
+                color= "#22D3EE88"
             )
         else:
             st.info("No location data available for the map.")
@@ -371,7 +372,8 @@ with overview_tab:
                         "Shows how the number of recorded earthquakes changes by year."
                         )
             st.bar_chart(
-                yearly.set_index("year")["earthquakes"]
+                yearly.set_index("year")["earthquakes"],
+                color= "#5BA4F5"
             )
 
             
@@ -382,7 +384,8 @@ with overview_tab:
                         "Shows the distribution of earthquakes across magnitude categories."
                         )
             st.bar_chart(
-                magnitude.set_index("mag_category")["earthquakes"]
+                magnitude.set_index("mag_category")["earthquakes"],
+                color= "#5BA4F5"
             )
 
 
@@ -390,14 +393,16 @@ with overview_tab:
             st.subheader("Earthquakes by Depth Category")
             st.write("Shows how many earthquakes are shallow, intermediate or deep.")
             st.bar_chart(
-                depth.set_index("depth_category")["earthquakes"]
+                depth.set_index("depth_category")["earthquakes"],
+                color= "#5BA4F5"
             )
 
             st.subheader("Tsunami Events by Year")
             st.write("Shows earthquakes by depth and yearly tsunami-flagged events.")
             if not tsunami.empty:
                 st.bar_chart(
-                    tsunami.set_index("year")["tsunami_events"]
+                    tsunami.set_index("year")["tsunami_events"],
+                    color= "#5BA4F5"
                 )
             else:
                 st.info("No tsunami events found.")
