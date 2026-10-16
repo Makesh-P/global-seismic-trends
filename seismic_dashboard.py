@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
+import pydeck as pdk
 
 st.set_page_config(
     page_title="Global Seismic Trends",
@@ -302,11 +303,10 @@ def get_overview_data():
     """, engine)
 
     map_data = pd.read_sql("""
-        SELECT latitude, longitude, mag
-        FROM earthquake
-        WHERE type = 'earthquake' AND mag >= 5
-    """, engine)
-    map_data["size"] = map_data["mag"] ** 3 * 300
+    SELECT latitude, longitude, place, mag, depth_km, time
+    FROM earthquake
+    WHERE type = 'earthquake' AND mag >= 5
+""", engine)
 
     return total, avg_mag, max_mag, max_depth, yearly, magnitude, depth, tsunami, map_data
 
@@ -350,13 +350,63 @@ with overview_tab:
         st.subheader("Earthquake Locations")
 
         if not map_data.empty:
-            st.map(
-                map_data,
-                latitude="latitude",
-                longitude="longitude",
-                size="mag",
-                color= "#22D3EE88"
+            map_data["time"] = pd.to_datetime(
+                map_data["time"], utc=True
+            ).dt.strftime("%Y-%m-%d %H:%M UTC")
+
+            layer = pdk.Layer(
+                "ScatterplotLayer",
+                data=map_data,
+                get_position="[longitude, latitude]",
+                get_radius="mag * 1000",
+                radius_min_pixels=3,
+                radius_max_pixels=12,
+                get_fill_color=[34, 211, 238, 136],
+                get_line_color=[34, 211, 238, 200],
+                line_width_min_pixels=1,
+                stroked=True,
+                filled=True,
+                pickable=True,
+                auto_highlight=True,
             )
+
+            view_state = pdk.ViewState(
+                latitude=map_data["latitude"].mean(),
+                longitude=map_data["longitude"].mean(),
+                zoom=1,
+                pitch=0,
+            )
+
+            tooltip = {
+                "html": """
+                    <div style="padding: 6px;">
+                        <b>{place}</b><br/>
+                        Magnitude: {mag}<br/>
+                        Depth: {depth_km} km<br/>
+                        Time: {time}
+                    </div>
+                """,
+                "style": {
+                    "backgroundColor": "#17212b",
+                    "color": "white",
+                    "fontSize": "12px",
+                    "padding": "10px",
+                },
+            }
+
+            deck = pdk.Deck(
+                layers=[layer],
+                initial_view_state=view_state,
+                map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+                tooltip=tooltip,
+            )
+
+            st.pydeck_chart(
+                deck,
+                use_container_width=True,
+                height=500,
+            )
+
         else:
             st.info("No location data available for the map.")
 
