@@ -104,7 +104,7 @@ Both scripts connect to a local MySQL server. Open `seismic_etl.py` and `seismic
 
 ## Dashboard Preview
 
-![Overview]()
+![Overview](screenshots/overview.png)
 ![SQL Analysis](screenshots/sql_analysis.png)
 
 ## Key Findings
